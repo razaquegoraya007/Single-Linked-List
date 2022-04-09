@@ -1,0 +1,70 @@
+public class Kun {
+    //Global Variale for Head
+    Node head = null;
+
+    //Inner Class
+    public class Node {
+        char ch;
+        Node next;
+        Node (char ch){
+            this.ch = ch;
+            this.next = null;
+        }
+    }
+
+    public void addFirst(char ch){
+        Node newNode = new Node(ch);
+        if(head == null){
+            head = newNode;
+            return;
+        }
+        newNode.next = head;
+        head = newNode;
+    }
+
+    public void addLast(char ch){
+        Node newNode = new Node(ch);
+        if(head == null){
+            head = newNode;
+            return;
+        }
+        //cuurent Node beacause head is fixed
+        Node currentNode = head;
+        while(currentNode.next != null){
+            currentNode = currentNode.next;
+        }
+        currentNode.next = newNode;
+    }
+
+    public void showR(){
+        if(head == null){
+            System.out.println("Nothing in this List ");
+            return;
+        }
+        Node currentNode = head;
+        while(currentNode != null){
+            System.out.print(currentNode.ch+" ");
+            currentNode = currentNode.next;
+        }
+    }
+
+
+    public static void main(String[] args) {
+        Kun lst = new Kun();
+        lst.addLast('R');
+        lst.addFirst('>');
+        lst.addFirst('-');
+        lst.addFirst('-');
+        lst.addLast('A');
+        lst.addLast('Z');
+        lst.addLast('A');
+        lst.addLast('Q');
+        lst.addLast('<');
+        lst.addLast('-');
+        lst.addLast('-');
+        lst.showR();
+
+
+
+    }
+}
